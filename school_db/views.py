@@ -175,7 +175,7 @@ Courses:
 # Expected Resulting SQL Query (Found in "SQL" section of the debug toolbar in browser):
 """
 # First Query:
-
+n 
 SELECT `school_db_instructor`.`id`,
        `school_db_instructor`.`first_name`,
        `school_db_instructor`.`last_name`,
@@ -200,6 +200,25 @@ SELECT `school_db_instructor`.`id`,
 
 # Get the count of students, courses, and instructors and print them in the terminal
 def problem_four(request):
+    instructors = Instructor.objects.all()
+    students = Student.objects.all()
+    courses = Course.objects.all()
+    
+    student_count = Student.objects.count()
+    print(f"Students Count: {student_count}")
+    course_count = Course.objects.count()
+    print(f"Courses Count: {course_count}")
+    instructor_count = Instructor.objects.count()
+    print(f"Instructors Count: {instructor_count}")
+  
+  
+  
+    # for course in courses:
+    #    print(f"{course.name}")
+    # for student in students:
+    #    print(f"{student.first_name} {student.last_name}")
+    # for instructor in instructors:
+    #    print(f"{instructor.first_name} {instructor.last_name}")
 
     return complete(request)
 
