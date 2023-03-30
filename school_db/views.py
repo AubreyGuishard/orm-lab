@@ -349,10 +349,12 @@ LIMIT 21
 def problem_seven(request):
 
     # Make sure to set this equal to the primary key of the row you just created!
-    student_id = 11
+    a = Student.objects.get(pk=11)
+    # print(f"Student: {a.first_name} {a.last_name}")
+    Student.objects.filter(id=a).delete()
 
     try:
-        student = Student.objects.get(pk=student_id)
+        student = Student.objects.get(pk=a)
     except ObjectDoesNotExist:
         print('Great! It failed and couldnt find the object because we deleted it!')
 
