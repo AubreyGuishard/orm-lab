@@ -211,6 +211,7 @@ def problem_four(request):
     instructor_count = Instructor.objects.count()
     print(f"Instructors Count: {instructor_count}")
   
+    return complete(request)
   
   
     # for course in courses:
@@ -220,7 +221,6 @@ def problem_four(request):
     # for instructor in instructors:
     #    print(f"{instructor.first_name} {instructor.last_name}")
 
-    return complete(request)
 
 
 # Supporting Query Method Documentation:
@@ -263,6 +263,8 @@ SELECT COUNT(*) AS `__count`
 # Print the new student's id, full name, year, and gpa to the terminal
 # NOTE every time you execute this function a duplicate student will be created with a different primary key number
 def problem_five(request):
+    a = Student.objects.create(first_name="Aubrey", last_name="Guishard", year=10, gpa=5.0)
+    print(f"Id: {a.id}, First Name: {a.first_name} Last Name: {a.last_name}, Year: {a.year}, GPA: {a.gpa}")
 
     return complete(request)
 
