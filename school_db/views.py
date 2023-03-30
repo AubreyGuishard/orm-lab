@@ -100,7 +100,7 @@ SELECT `school_db_student`.`id`,
 # Order by hire date ascending
 # Print out the instructor's full name and hire date to the terminal
 def problem_two(request):
-    instructors = Instructor.objects.filter(hire_date__lte=2010)
+    instructors = Instructor.objects.filter(hire_date__year__lt=2010)
 
     for instructor in instructors:
       print(f"Full Name: {instructor.first_name} {instructor.last_name}")
@@ -147,9 +147,16 @@ SELECT `school_db_instructor`.`id`,
 # Print the instructors name and courses that he belongs to in the terminal
 # (Do not hard code his name in the print)
 def problem_three(request):
+  instructor_two = Instructor.objects.get(id=2)
+  print(f"Instroctor Name: {instructor_two.first_name} {instructor_two.last_name}")
+  
+  courses = Course.objects.all()
+  for course in courses:
+     if course.instructor == instructor_two:
+        print(f"{course.name}")
 
-    return complete(request)
-
+ 
+  return complete(request)
 
 # Supporting Query Method Documentation:
 """
@@ -269,11 +276,14 @@ VALUES ('Kyle', 'Harwood', 9, 3.0)
 # Then query the studets table to get that student by their id
 # Print the new student's id, full name, and gpa to the terminal
 def problem_six(request):
+  Student.objects.filter(id=5).update(gpa=0.1)
+  students = Student.objects.get(id=5)
+  print(students.first_name, students.last_name, students.gpa)
 
     # Make sure to set this equal to the primary key of the row you just created!
-    student_id = 11
+    # student_id = 11
 
-    return complete(request)
+  return complete(request)
 
 
 # Supporting Query Method Documentation:
